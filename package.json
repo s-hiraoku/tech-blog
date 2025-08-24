@@ -1,0 +1,38 @@
+{
+  "name": "tech-blog-platform",
+  "version": "1.0.0",
+  "description": "高効率な技術ブログ執筆プラットフォーム",
+  "scripts": {
+    "new": "./scripts/new-article.sh",
+    "publish": "./scripts/publish-article.sh",
+    "stats": "./scripts/update-stats.sh",
+    "analyze": "./scripts/batch-process.sh analyze",
+    "optimize": "./scripts/batch-process.sh optimize",
+    "backup": "./scripts/batch-process.sh backup",
+    "clean": "./scripts/batch-process.sh clean",
+    "ideas": "./scripts/content-ideas.sh",
+    "preview": "python3 -m http.server 8000",
+    "setup": "chmod +x scripts/*.sh && npm run stats",
+    "lint": "textlint articles/**/*.md",
+    "lint:fix": "textlint --fix articles/**/*.md",
+    "textlint": "npm run lint"
+  },
+  "devDependencies": {
+    "markdownlint-cli": "^0.37.0",
+    "prettier": "^3.0.0",
+    "textlint": "^13.0.0",
+    "textlint-rule-preset-ja-technical-writing": "^7.0.0",
+    "textlint-rule-preset-japanese": "^10.0.0",
+    "textlint-rule-spellcheck-tech-word": "^5.0.0",
+    "@textlint-ja/textlint-rule-preset-ai-writing": "^2.0.0"
+  },
+  "keywords": [
+    "blog",
+    "markdown",
+    "writing",
+    "automation",
+    "technical-writing"
+  ],
+  "author": "",
+  "license": "MIT"
+}

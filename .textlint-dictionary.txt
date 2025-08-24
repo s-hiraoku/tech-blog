@@ -1,0 +1,39 @@
+# カスタム辞書ファイル
+# プロジェクト固有の用語や許可する表現
+
+# フレームワーク・ライブラリ
+Next.js
+React
+Vue.js
+Nuxt.js
+TypeScript
+JavaScript
+Node.js
+Webpack
+Vite
+
+# クラウド・インフラ
+AWS
+GCP
+Docker
+Kubernetes
+Terraform
+
+# 開発ツール
+VSCode
+GitHub
+GitLab
+npm
+yarn
+
+# 技術用語
+API
+JSON
+HTML
+CSS
+SQL
+NoSQL
+REST
+GraphQL
+WebSocket
+PWA
