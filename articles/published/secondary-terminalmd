@@ -1,0 +1,62 @@
+CLI型コーディングエージェントが普及している昨今。VS Codeの標準ターミナルだけじゃ困ることはないですか。
+そんな悩みはtmuxやzellijのような別のアプリを使ったらいいのでは？という意見もありますが、筆者はVS Codeだけで完結したいという思いがありました。
+
+## VS Code Extension「Secondary Terminal」の紹介
+AIの動作検証のサンプルアプリとして作成していたのですが、個人的に使ってみて、とりあえずはいい感じになったので、ご紹介します。
+
+下部のパネルにVS Code標準のターミナルを表示し、セカンダリサイドバーに本拡張機能を使ってClaude CodeとGemini CLIを使った例です。標準のターミナルだけでは、下部のパネルかサイドバーのどちらかしかターミナルを起動できませんが、拡張機能を使うと両方に表示できます。
+
+![](https://storage.googleapis.com/zenn-user-upload/bc97066b67ae-20250809.png)
+
+
+https://marketplace.visualstudio.com/items?itemName=s-hiraoku.vscode-sidebar-terminal
+
+https://github.com/s-hiraoku/vscode-sidebar-terminal
+
+## 基本機能の紹介
+### ターミナルは最大５つまで表示
+5つ以上表示することもできますが、そんなに表示しても画面上でつかえるの5つくらいだよねぇってことで5つに制限しています。
+
+![](https://storage.googleapis.com/zenn-user-upload/37e8c9d2680f-20250809.png)
+
+### Panelにも移動可能
+下部のPanelにも移動可能です。ここで表示する場合はターミナルの分割を横分割にしています。標準のターミナルと同じような機能にしています。
+
+![](https://storage.googleapis.com/zenn-user-upload/72bddf813b43-20250809.png)
+
+## コーディングエージェントと親和性の高い機能
+### ファイル参照送信機能
+[Claude Code for VSCode](https://marketplace.visualstudio.com/items?itemName=anthropic.claude-code)にキーボードショートカットとして、MacならOPT+CMD+Kで選択したコードをClaude Codeに送るファイル参照機能があります。
+この機能はClaude Code for VSCodeがVS Code標準のターミナルをターゲットにして送信しています。
+
+そのため「Secondary Terminal」にClaude Codeを起動していてもファイル参照は送信されません。それだと悔しいので、OPT+CMD+Lでファイル参照を送る機能を追加しました。
+
+Gemini CLIの方にも送信できるようにしています。ただしGemini CLIは行の認識はできないようです。
+`@src/awesome.ts#L213-L235`というように送信してもファイルまでの認識にとどまるようです。
+
+#### ファイル参照を送信するターミナルは？
+ターゲットのターミナルは、「AI Agent Connected」と表示されているターミナルです。
+
+![](https://storage.googleapis.com/zenn-user-upload/717bcaceb00d-20250809.png)
+
+複数AIエージェントを起動している状態でも「AI Agent Connected」と表示しているターミナルがターゲットです。
+AIエージェントが起動していて、ファイル参照のターゲットになっていないターミナルには、「AI Agent Disconnected」と表示されています。
+もしこのターミナルをターゲットにしたい場合はプラグアイコンをポチッとしていただければ、「AI Agent Connected」になり、ファイル参照を送信することができます。
+
+![](https://storage.googleapis.com/zenn-user-upload/2973e0216e4e-20250809.png)
+
+GitHub Copilotにもファイル参照を送ろうと思いましたが、GitHub Copilotが認識できる形式で送信することができませんでした。筆者は「GitHub Copilotに余計なことすんなよ」というような警告と捉えました。
+またCodex CLIはVS Codeの拡張機能が優秀なので、そっちを使ったほうが良いと思います。しかし使うときもあるかなとファイル参照機能は使えるようにしておきました。
+
+## まとめ
+ちなみに絶賛開発中ですので、バグもありますし、ドキュメントなども揃っていません。
+空き時間に少しずつ開発を進めようと思っています。
+
+最後に注意点として、この拡張機能をインストールした直後はPrimary Sidebarに表示されますので、適宜Sidebar TerminalやPanelに移動してください。
+（デフォルトでSecondary Sidebarに表示しようと思いましたが、できませんでした。）
+
+## さいごに
+Xもやっていますので、コメントやフォローをいただけると嬉しいです。
+![](https://storage.googleapis.com/zenn-user-upload/547c072a232f-20250809.png)
+
+https://x.com/2020_hira
